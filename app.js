@@ -96,6 +96,11 @@ app.use((req, res, next) => {
   res.locals.currUser = req.user; // to show signup and login option only if not logged in . will be used in navbar.ejs
   next();
 });
+
+app.get("/", (req, res) => {
+  res.redirect("/listings");
+});
+
 app.use("/listings", listingsRouter);
 app.use("/listings/:id/reviews", reviewsRouter);
 app.use("/", userRouter);
